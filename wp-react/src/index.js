@@ -6,10 +6,12 @@ import App from './components/app'
 import Home from './components/home'
 import Content from './components/content'
 
+const wp = window.WORDPRESS_CONTENT;
+
 ReactDOM.render(
   (
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
+      <Route path="/" data={wp} component={App}>
         <IndexRoute component={Home} />
         <Route path="/content" component={Content} />
       </Route>

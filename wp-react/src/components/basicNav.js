@@ -16,8 +16,8 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:props.data,
-      value: props.data[0].title
+      items:props.data.menu,
+      value: props.data.menu[0].title
     };
   }
 
