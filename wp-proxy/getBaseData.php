@@ -8,7 +8,8 @@ function getFlatMenu () {
     foreach($menu as $item) {
         $flatMenu[] = [
             "url" => $item->url,
-            "title" => $item->title
+            "title" => $item->title,
+            "id" => $item->ID
         ];
     }
     return $flatMenu;
@@ -21,6 +22,7 @@ function getFlatPages () {
         $flatPages[] = [
             "post_author" => $page->post_author,
             "post_date" => $page->post_date,
+            "post_id" => $page->ID,
             "post_content" => $page->post_content,
             "post_title" => $page->post_title,
             "post_name" => $page->post_name,
@@ -37,6 +39,7 @@ function getFlatPosts () {
         $flatPages[] = [
             "post_author" => $page->post_author,
             "post_date" => $page->post_date,
+            "post_id" => $page->ID,
             "post_content" => $page->post_content,
             "post_title" => $page->post_title,
             "post_name" => $page->post_name,

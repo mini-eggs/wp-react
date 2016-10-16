@@ -1,13 +1,16 @@
-import React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import React from 'react'
+import {Tabs, Tab} from 'material-ui/Tabs'
+import {browserHistory} from 'react-router'
 
 const inline = {
   Tab: {
-    backgroundColor:'#F6921E',
-    padding: '10px 0'
+    padding: '10px 0',
+    backgroundColor:'#F6921E'
   },
   Bar: {
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    height:'4px',
+    marginTop:'-4px'
   }
 };
 
@@ -16,15 +19,52 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data:props.data,
       items:props.data.menu,
-      value: props.data.menu[0].title
+      value: props.data.menu[0].id
     };
   }
 
-  handleChange = (value) => {
-    this.setState({
-      value: value
+  getRouteFromValue = (val) => {
+    let find;
+    let pageOrPost;
+
+    this.state.items.map((item) => {
+      if(item.id === val)
+        find = item.title;
+      return item;
     });
+
+    if(!find) return false;
+
+    this.state.data.pages.map((page) => {
+      if(page.post_title === find)
+        pageOrPost = page;
+      return page;
+    });
+
+    this.state.data.posts.map((post) => {
+      if(post.post_title === find)
+        pageOrPost = post;
+      return post;
+    });
+
+    if(!pageOrPost) return false;
+
+    return '/page/' + pageOrPost.post_name;
+  };
+
+  handleChange = (value) => {
+
+    let route = this.getRouteFromValue(value);
+
+    if(route) {
+
+      browserHistory.push(route);
+      this.setState({
+        value: value
+      });
+    }
   };
 
   render() {
@@ -32,7 +72,8 @@ export default class extends React.Component {
       <Tabs
         value={this.state.value}
         onChange={this.handleChange}
-        inkBarStyle={inline.Bar}
+        inkBarStyle={inline.Bar}s
+        style={{width:this.state.items.length * 200 + 'px'}}
       >
         {
           this.state.items.map((item,i) => {
@@ -40,7 +81,7 @@ export default class extends React.Component {
               key={i}
               style={inline.Tab}
               label={item.title}
-              value={item.title}
+              value={item.id}
             />
           })
         }
