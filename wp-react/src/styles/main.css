@@ -1,3 +1,21 @@
 .np {
     padding:0;
 }
+.divider {
+    width:100%;
+    height:5px;
+}
+.hide-mobile {
+    display:initial;
+}
+.hide-dektop {
+    display:none;
+}
+@media(max-width:748px){
+    .hide-mobile {
+        display:none;
+    }
+    .hide-dektop {
+        display:initial;
+    }
+}
