@@ -1,1 +1,1 @@
-# wp-react
+# wp-react + wp-proxy

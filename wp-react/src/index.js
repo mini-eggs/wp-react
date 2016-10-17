@@ -6,7 +6,7 @@ import App from './components/app'
 import Page from './components/page'
 import Category from './components/category'
 
-fetch('http://wordpress.localhost:81/wp-proxy/index.php?type=base', {
+fetch('http://wordpress.localhost:81/wp-proxy/index.php?type=getJson', {
   method: 'get'
 }).then((data) => {
   data.json().then((wp) => {

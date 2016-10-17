@@ -32,6 +32,17 @@ function getFlatPages () {
     return $flatPages;
 }
 
+function getFlatCategoriesOfPost ($id) {
+    $categories = wp_get_post_categories($id);
+    $flatCategories = [];
+    foreach($categories as $cat){
+        $flatCategories[] = [
+            'category_id' => $cat
+        ];
+    }
+    return $flatCategories;
+}
+
 function getFlatPosts () {
     $pages = get_posts(["hierarchical" => false]);
     $flatPages = [];
@@ -43,7 +54,8 @@ function getFlatPosts () {
             "post_content" => $page->post_content,
             "post_title" => $page->post_title,
             "post_name" => $page->post_name,
-            "post_image" => wp_get_attachment_url(get_post_thumbnail_id($page->ID))
+            "post_image" => wp_get_attachment_url(get_post_thumbnail_id($page->ID)),
+            "post_categories" => getFlatCategoriesOfPost($page->ID)
         ];
     }
     return $flatPages;
@@ -54,7 +66,7 @@ function getFlatCategories () {
     $flatCategories = [];
     foreach($categories as $item) {
         $flatCategories[] = [
-            "term_id" => $item->term_id,
+            "category_id" => $item->term_id,
             "name" => $item->name,
             "slug" => $item->slug
         ];
