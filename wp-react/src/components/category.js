@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Helmet from './shared/helmet'
+
 const getPath = () => {
   let path = document.createElement("a");
   path.href = window.location.href;
@@ -54,6 +56,7 @@ export default class extends React.Component {
   render(){
     return (
       <div>
+        <Helmet title={"See Spark Go | " + this.state.category.name} />
         {this.state.category.name}
       </div>
     );

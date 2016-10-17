@@ -26,7 +26,10 @@ function getFlatPages () {
             "post_content" => $page->post_content,
             "post_title" => $page->post_title,
             "post_name" => $page->post_name,
-            "post_image" => wp_get_attachment_url(get_post_thumbnail_id($page->ID))
+            "post_image" => wp_get_attachment_url(get_post_thumbnail_id($page->ID)),
+            "actions" => get_post_meta($page->ID, "actions", true),
+            "overlay_title" => get_post_meta($page->ID, "overlay_title", true),
+            "overlay_description" => get_post_meta($page->ID, "overlay_description", true)
         ];
     }
     return $flatPages;
@@ -55,7 +58,10 @@ function getFlatPosts () {
             "post_title" => $page->post_title,
             "post_name" => $page->post_name,
             "post_image" => wp_get_attachment_url(get_post_thumbnail_id($page->ID)),
-            "post_categories" => getFlatCategoriesOfPost($page->ID)
+            "post_categories" => getFlatCategoriesOfPost($page->ID),
+            "actions" => get_post_meta($page->ID, "actions", true),
+            "overlay_title" => get_post_meta($page->ID, "overlay_title", true),
+            "overlay_description" => get_post_meta($page->ID, "overlay_description", true)
         ];
     }
     return $flatPages;

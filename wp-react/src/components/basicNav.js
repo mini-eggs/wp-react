@@ -14,17 +14,45 @@ const inline = {
   }
 };
 
-export default class extends React.Component {
+const getPath = () => {
+  let path = document.createElement("a");
+  path.href = window.location.href;
+  let url = path.pathname;
+  path.remove();
+  return url.replace('/page/','').replace('/category/','');
+};
 
+const getInitialValue = (props) => {
+  let val = -1;
+  let find = getPath();
+  props.data.menu.map((item) => {
+    let match = "";
+    props.data.pages.map((page) => {
+      if(page.post_title === item.title)
+        match = page.post_name;
+      return page;
+    });
+    props.data.categories.map((cat) => {
+      if(cat.name === item.title)
+        match = cat.slug;
+      return cat;
+    });
+    if(match === find)
+      val=item.id;
+    return item;
+  });
+  return val;
+};
+
+export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data:props.data,
       items:props.data.menu,
-      value: props.data.menu[0].id
+      value: getInitialValue(props)
     };
   }
-
   getRouteFromValue = (val) => {
     let find;
     let pageOrPost;
@@ -66,20 +94,15 @@ export default class extends React.Component {
 
     return '/' + type + '/' + pageOrPost;
   };
-
   handleChange = (value) => {
-
     let route = this.getRouteFromValue(value);
-
     if(route) {
-
       browserHistory.push(route);
       this.setState({
         value: value
       });
     }
   };
-
   render() {
     return (
       <Tabs

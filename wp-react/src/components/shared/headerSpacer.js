@@ -3,8 +3,8 @@ import React from 'react'
 const inline = {
   headerSpacer: {
     backgroundColor:'#f6a548',
-    height:'300px',
-    marginBottom:'-275px'
+    height:'200',
+    marginBottom:'-175px'
   }
 };
 
