@@ -2,6 +2,7 @@ import React from 'react'
 
 import BasicNav from './basicNav'
 import BasicAppBar from './basicAppBar'
+import HeaderSpacer from './shared/headerSpacer'
 
 const inline = {
   background: {
@@ -11,9 +12,14 @@ const inline = {
 
 export default (props) => {
   return (
-    <div style={inline.background}>
-      <BasicAppBar title={props.title} />
-      <BasicNav data={props.data} />
+    <div>
+      <div style={inline.background}>
+        <BasicAppBar  data={props.data} title={props.title} />
+        <div className="hide-desktop">
+          <BasicNav data={props.data} />
+        </div>
+      </div>
+      <HeaderSpacer />
     </div>
   );
 }

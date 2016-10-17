@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom'
 import {Router,Route,browserHistory,IndexRedirect} from 'react-router'
 
 import App from './components/app'
-import Content from './components/content'
 import Page from './components/page'
+import Category from './components/category'
 
-const wp = window.WORDPRESS_CONTENT;
-
-ReactDOM.render(
-  (
-    <Router history={browserHistory}>
-      <Route path="/" data={wp} component={App}>
-        <IndexRedirect to="/page/hello-from-see-spark-go" />
-        <Route path="/content" component={Content} />
-        <Route path="/page/:page" component={Page} />
-      </Route>
-    </Router>
-  ),
-  document.getElementById('root')
-);
+fetch('http://wordpress.localhost:81/wp-proxy/index.php?type=base', {
+  method: 'get'
+}).then((data) => {
+  data.json().then((wp) => {
+    ReactDOM.render(
+      (
+        <Router history={browserHistory}>
+          <Route path="/" data={wp} component={App}>
+            <IndexRedirect to="/page/home" />
+            <Route path="/page/:page" component={Page} />
+            <Route path="/category/:category" component={Category} />
+          </Route>
+        </Router>
+      ),
+      document.getElementById('root')
+    );
+  });
+});
