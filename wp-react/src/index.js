@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Router,Route,browserHistory,IndexRedirect} from 'react-router'
+import {Router,Route,browserHistory,IndexRoute} from 'react-router'
 
 import App from './components/app'
-import Page from './components/page'
+import Page from './components/content/page'
 import Category from './components/category'
+import Instagram from './components/instagram/'
 
 fetch('http://wordpress.localhost:81/wp-proxy/index.php?type=getJson', {
   method: 'get'
@@ -13,10 +14,10 @@ fetch('http://wordpress.localhost:81/wp-proxy/index.php?type=getJson', {
     ReactDOM.render(
       (
         <Router history={browserHistory}>
-          <Route path="/" data={wp} component={App}>
-            <IndexRedirect to="/page/home" />
-            <Route path="/page/:page" component={Page} />
-            <Route path="/category/:category" component={Category} />
+          <Route path="/" component={Instagram}/>
+          <Route path="page" data={wp} component={App}>
+            <Route path=":page" component={Page} />
+            <Route path=":category" component={Category} />
           </Route>
         </Router>
       ),

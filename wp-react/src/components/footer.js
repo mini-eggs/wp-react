@@ -2,7 +2,6 @@ import React from 'react'
 
 const inline = {
   margin:{
-    marginTop:'150px'
   },
   light:{
     backgroundColor:'#333333',

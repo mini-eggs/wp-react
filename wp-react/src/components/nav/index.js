@@ -1,9 +1,9 @@
 import React from 'react'
 
-import BasicNav from './basicNav'
 import BasicAppBar from './basicAppBar'
-import HeaderSpacer from './shared/headerSpacer'
-import Paper from './shared/paper'
+import DesktopNav from './dekstopNav'
+import Paper from '../shared/paper'
+import './main.css'
 
 const inline = {
   position: {
@@ -16,18 +16,19 @@ const inline = {
 
 export default (props) => {
   return (
-    <nav>
+    <div style={{zIndex:'9',position:'relative'}} >
       <div style={inline.position}>
         <Paper data={{initial:1, range:0}}>
           <div style={inline.background}>
-            <BasicAppBar  data={props.data} title={props.title} />
-            <div className="hide-desktop">
-              <BasicNav data={props.data} />
+            <div className="show-tablet show-mobile">
+              <BasicAppBar  data={props.data} title={props.title} />
+            </div>
+            <div className="show-desktop">
+              <DesktopNav data={props.data} title={props.title} />
             </div>
           </div>
         </Paper>
       </div>
-      <HeaderSpacer />
-    </nav>
+    </div>
   );
 }

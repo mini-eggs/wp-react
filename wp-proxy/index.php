@@ -8,7 +8,7 @@ if(isset($_REQUEST['type'])) {
             require_once('getBaseData.php');
             require_once('../wp-load.php');
             $data = getBaseData();
-            $data = json_encode($data);
+//            $data = json_encode($data);
             break;
         case "createJson":
             require_once('getBaseData.php');
@@ -26,5 +26,7 @@ if(isset($_REQUEST['type'])) {
             break;
     }
 
-    echo $data;
+    print_r($data);
+
+//    echo $data;
 }

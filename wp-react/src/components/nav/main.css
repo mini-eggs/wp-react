@@ -1,0 +1,56 @@
+.desktop-header{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    /*background: -webkit-linear-gradient(rgba(0,0,0,0.1), transparent);*/
+    /*background: -o-linear-gradient(rgba(0,0,0,0.1), transparent);*/
+    /*background: -moz-linear-gradient(rgba(0,0,0,0.1), transparent);*/
+    /*background: linear-gradient(rgba(0,0,0,0.1), transparent);*/
+    /*z-index:9;*/
+    /*height:300px;*/
+}
+.desktop-header .f-left{
+    float:left;
+}
+.desktop-header .f-right{
+    float:right;
+}
+.desktop-header a,
+.desktop-header a:hover,
+.desktop-header a:active,
+.desktop-header a:visited,
+.desktop-header a:focus{
+    color:#fff;
+    text-decoration: none;
+}
+.desktop-header a.link,
+.desktop-header a.link:hover,
+.desktop-header a.link:active,
+.desktop-header a.link:visited,
+.desktop-header a.link:focus{
+    font-size:16px;
+    z-index:99;
+    position: relative;
+    top: 26px;
+    cursor:pointer;
+}
+.desktop-header a.link:hover{
+    border: 0 #fff solid;
+    border-bottom-width:2px;
+}
+.desktop-header .item{
+    display:inline-block;
+    margin: 0 0 0 30px;
+    height:64px;
+}
+.desktop-header .p-right{
+    padding-right:40px;
+}
+.desktop-header .brand{
+    position: relative;
+    z-index: 1;
+    font-size: 28px;
+    margin-top: 18px;
+    margin-left: 40px;
+}

@@ -75,22 +75,20 @@ export default class extends React.Component {
         iconElementLeft={<span/>}
         title={this.state.title}
         iconElementRight={(
-        <div className="hide-tablet hide-mobile">
-      <IconMenu
-        iconButtonElement={<IconButton><MoreVertIcon color="white"/></IconButton>}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-      >
-        {
-          this.state.items.map((item,i) => {
-            return (
-              <MenuItem onClick={() => {this.navigateTo(item.id)}} key={i} primaryText={item.title} />
-            );
-          })
-        }
-      </IconMenu>
-      </div>
-    )}
+          <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon color="white"/></IconButton>}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          >
+            {
+              this.state.items.map((item,i) => {
+                return (
+                  <MenuItem onClick={() => {this.navigateTo(item.id)}} key={i} primaryText={item.title} />
+                );
+              })
+            }
+          </IconMenu>
+        )}
       />
     );
   }
