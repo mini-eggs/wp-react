@@ -66,7 +66,6 @@ export default class extends React.Component{
           <div className="p-right">
             {
               this.state.data.menu.map( (item) => {
-                console.log(item);
                 return (
                   <div className="item">
                     <Link to={this.getRouteFromValue(item.id)} className="link">

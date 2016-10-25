@@ -6,7 +6,11 @@
     text-align: center;
     width:100%;
     background-position:center center;
-    background-size:cover
+    background-size:cover;
+}
+.content .title.abs{
+    top:0;
+    position: absolute;
 }
 .content .title h1{
     text-transform: uppercase;
@@ -61,7 +65,7 @@
     margin: 0 auto;
 }
 .content .content-image{
-    margin-bottom:50px;
+    margin-bottom:100px;
 }
 .content .divider {
     background-color:rgb(246, 146, 30);

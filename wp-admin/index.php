@@ -6,8 +6,20 @@
  * @subpackage Administration
  */
 
+// define('WP_HOME','http://ssg.localhost/');
+// define('WP_SITEURL','http://ssg.localhost/');
+
 /** Load WordPress Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
+
+// update_option( 'siteurl', 'http://ssg.localhost/' );
+// update_option( 'home', 'http://ssg.localhost/' );
+
+define('WP_HOME','http://ssg.localhost/');
+define('WP_SITEURL','http://ssg.localhost/');
+
+update_option( 'siteurl', 'http://ssg.localhost/' );
+update_option( 'home', 'http://ssg.localhost/' );
 
 /** Load WordPress dashboard API */
 require_once(ABSPATH . 'wp-admin/includes/dashboard.php');

@@ -5,6 +5,8 @@ import Helmet from '../shared/helmet'
 import Paper from '../shared/paper'
 import ShareBtn from '../shared/share'
 
+import Zodiac from './zodiac'
+
 import './main.css'
 
 const getPath = () => {
@@ -59,21 +61,40 @@ export default class extends React.Component {
     this.state = initializeClass(props);
   }
   componentWillReceiveProps(props){
-    setTimeout(() => {
-      this.setState(initializeClass(props));
-    }, 200)
+    let newState = initializeClass(props)
+    if(JSON.stringify(newState) != JSON.stringify(this.state))
+      this.setState(newState, () => {
+        this.clean()
+        this.zodiac()
+      })
+  }
+  componentDidMount(){
+    this.zodiac()
+  }
+  componentWillUnmount(){
+    this.clean()
+  }
+  zodiac(){
+    Zodiac({container:'title-background', color:this.state.page.background_color})
+  }
+  clean(){
+    let canvas = document.getElementById('title-background')
+    let context = canvas.getContext("2d")
+    context.clearRect(0, 0, canvas.width, canvas.height)
   }
   render(){
     return (
       <div className="content">
         <Helmet title={"See Spark Go | " + this.state.page.post_title} />
-        <div className="title" style={{backgroundColor: this.state.page.background_color}}>
+        <canvas id="title-background" className="title" style={{backgroundColor: this.state.page.background_color}}>
+          <h1 className="">{this.state.page.post_title}</h1>
+        </canvas>
+        <div className="title abs" style={{backgroundColor: 'transparent'}}>
           <h1 className="">{this.state.page.post_title}</h1>
         </div>
         <div className="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2 np">
           <div className="max-width">
             <div className="the-content">
-              {console.log(this.state.page)}
               <div className="preview-text">
                 <div className="overlay-title">
                   <span>{this.state.page.overlay_title}</span>

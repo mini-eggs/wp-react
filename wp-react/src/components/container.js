@@ -32,9 +32,7 @@ export default class extends React.Component {
               <BasicNavWrap title="See Spark Go" data={this.state.wp} />
             </Paper>
             <div className="col-xs-12 np">
-              <Transition data={this.state.default.children}>
-                {React.cloneElement(this.state.default.children, {data:this.state.wp})}
-              </Transition>
+              {React.cloneElement(this.state.default.children, {data:this.state.wp})}
             </div>
             <div className="col-xs-12 np">
               <Paper data={{initial:0, range:0}}>
@@ -47,3 +45,7 @@ export default class extends React.Component {
     );
   }
 }
+
+// <Transition data={this.state.default.children}>
+//   {React.cloneElement(this.state.default.children, {data:this.state.wp})}
+// </Transition>
