@@ -13,16 +13,11 @@ export default (props) => {
 	    pivot: 0,
 	    density: 10000,
 	    dotRadius: [2, 5],
-	    backgroundColor: hexToRgb(props.color),
 	    dotColor: 'rgba(255,255,255,0.25)',
 	    linkColor: 'rgba(255,255,255,0.25)',
 	    linkDistance: 50,
 	    linkWidth: 2
 	};
-
-	let canvas = document.getElementById(props.container);
-	let context = canvas.getContext("2d");
-	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	new Zodiac(props.container,options);
 }

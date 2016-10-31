@@ -16,7 +16,7 @@ function getFlatMenu () {
 }
 
 function getFlatPages () {
-    $pages = get_pages(["hierarchical" => false]);
+    $pages = get_pages(["hierarchical" => false, "numberposts" => -1]);
     $flatPages = [];
     foreach($pages as $page){
         $flatPages[] = [
@@ -48,7 +48,7 @@ function getFlatCategoriesOfPost ($id) {
 }
 
 function getFlatPosts () {
-    $pages = get_posts(["hierarchical" => false]);
+    $pages = get_posts(["hierarchical" => false, "numberposts" => -1]);
     $flatPages = [];
     foreach($pages as $page){
         $flatPages[] = [
@@ -63,7 +63,9 @@ function getFlatPosts () {
             "actions" => get_post_meta($page->ID, "actions", true),
             "overlay_title" => get_post_meta($page->ID, "overlay_title", true),
             "overlay_description" => get_post_meta($page->ID, "overlay_description", true),
-            "background_color" => get_post_meta($page->ID, "background_color", true)
+            "background_color" => get_post_meta($page->ID, "background_color", true),
+            "social_description" => get_post_meta($page->ID, "social_description", true),
+            "social_link" => get_post_meta($page->ID, "social_link", true)
         ];
     }
     return $flatPages;
@@ -93,6 +95,11 @@ function getFlatAuthors(){
     return $authorsFlat;
 }
 
+function getInstagramData(){
+    $ig = file_get_contents('https://api.instagram.com/v1/tags/seesparkgo/media/recent?access_token=1966337383.a8a929d.774ac5195e9a42e5b0bbe20843c3b128&count=16');
+    return json_decode($ig);
+}
+
 function getBaseData () {
 
     $data = [
@@ -100,7 +107,8 @@ function getBaseData () {
         "pages" => getFlatPages(),
         "posts" => getFlatPosts(),
         "categories" => getFlatCategories(),
-        "authors" => getFlatAuthors()
+        "authors" => getFlatAuthors(),
+        "instagram" => getInstagramData()
     ];
 
     return $data;

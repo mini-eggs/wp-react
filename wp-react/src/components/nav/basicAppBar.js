@@ -8,8 +8,11 @@ import {browserHistory} from 'react-router'
 
 const inline = {
   AppBar: {
-    backgroundColor:'#F6921E',
-    boxShadow: 'none'
+    backgroundColor:'transparent',
+    boxShadow: 'none',
+    position:'absolute',
+    top:'0',
+    width:'100%'
   }
 };
 

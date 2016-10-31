@@ -34,7 +34,7 @@ export default class extends React.Component {
             <div className="col-xs-12 np">
               {React.cloneElement(this.state.default.children, {data:this.state.wp})}
             </div>
-            <div className="col-xs-12 np">
+            <div className="col-xs-12 np content">
               <Paper data={{initial:0, range:0}}>
                 <FooterComp />
               </Paper>

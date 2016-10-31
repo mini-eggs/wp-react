@@ -57,9 +57,7 @@ export default class extends React.Component {
     this.state = initializeClass(props);
   }
   componentWillReceiveProps(props){
-    setTimeout(() => {
-      this.setState(initializeClass(props));
-    }, 200)
+    this.setState(initializeClass(props));
   }
   render(){
     return (

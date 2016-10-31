@@ -4,10 +4,10 @@ import {Router,Route,browserHistory} from 'react-router'
 
 import App from './components/app'
 import Page from './components/content/page'
-import Category from './components/category'
 import Instagram from './components/instagram/'
+import Category from './components/content/category'
 
-fetch('http://evanjones.xyz/seesparkgo/wp-proxy/?type=getJson', {
+fetch('http://ssg.localhost/wp-proxy/?type=getJson', {
   method: 'get'
 }).then((data) => {
   data.json().then((wp) => {
@@ -17,6 +17,8 @@ fetch('http://evanjones.xyz/seesparkgo/wp-proxy/?type=getJson', {
           <Route path="/" component={Instagram} />
           <Route path="page" data={wp} component={App}>
             <Route path=":page" component={Page} />
+          </Route>
+          <Route path="category" data={wp} component={App}>
             <Route path=":category" component={Category} />
           </Route>
         </Router>
