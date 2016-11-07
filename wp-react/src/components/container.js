@@ -1,9 +1,7 @@
 import React from 'react'
-
 import Paper from './shared/paper'
 import BasicNavWrap from './nav/'
 import Theme from './shared/theme'
-import Transition from './shared/transition'
 import FooterComp from './footer'
 import '../styles/bootstrap.css'
 import '../styles/animate.css'
@@ -26,7 +24,7 @@ export default class extends React.Component {
   render() {
     return (
       <Theme>
-        <div className="pageWrap">
+        <div className="pageWrap animated fadeIn">
           <div className="container-fluid np">
             <Paper data={{initial:1, range:0}}>
               <BasicNavWrap title="See Spark Go" data={this.state.wp} />

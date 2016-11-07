@@ -15,7 +15,7 @@ export default (props) => {
 	    dotRadius: [2, 5],
 	    dotColor: 'rgba(255,255,255,0.25)',
 	    linkColor: 'rgba(255,255,255,0.25)',
-	    linkDistance: 50,
+	    linkDistance: 75,
 	    linkWidth: 2
 	};
 

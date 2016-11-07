@@ -27,6 +27,11 @@ gulp.task('move-files', [], function() {
       "build/static/js/**.*"
     ])
     .pipe(gulp.dest('../static/js/'));
+
+  gulp.src([
+      "build/static/media/**.*"
+    ])
+    .pipe(gulp.dest('../static/media/'));
 });
 
 gulp.task('default', [], function() {

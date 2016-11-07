@@ -96,7 +96,7 @@ function getFlatAuthors(){
 }
 
 function getInstagramData(){
-    $ig = file_get_contents('https://api.instagram.com/v1/tags/seesparkgo/media/recent?access_token=1966337383.a8a929d.774ac5195e9a42e5b0bbe20843c3b128&count=16');
+    $ig = file_get_contents('https://api.instagram.com/v1/tags/seesparkgo/media/recent?access_token=1966337383.a8a929d.774ac5195e9a42e5b0bbe20843c3b128&count=25');
     return json_decode($ig);
 }
 

@@ -25,9 +25,12 @@ export default class extends React.Component{
 		super(props)
 		this.state={data:props.data}
 	}
+    componentDidMount(){
+	  scrollTo(document.body, 0)
+    }
 	render(){
 		return(
-			<div class="container np">
+			<div className="container np">
 				<div className="col-xs-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2 np">
 					<div className="category-container">
 						<div className="max-width">

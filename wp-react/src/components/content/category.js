@@ -1,8 +1,5 @@
 import React from 'react'
-import {Card, CardActions, CardMedia, CardText} from 'material-ui/Card'
 import Helmet from '../shared/helmet'
-import Paper from '../shared/paper'
-import ShareBtn from '../shared/share'
 import Zodiac from './zodiac'
 import './main.css'
 import Testimonials from './testimonials'
@@ -33,6 +30,7 @@ const getPostsFromCategory = props => {
 		post.post_categories.map( cat => {
 			if(cat.category_id === props.category.category_id)
 				posts.push(post)
+      return cat
 		})
 		return post
 	})
@@ -65,6 +63,15 @@ const initializeClass = props => {
   return state
 }
 
+const getImageFromCategory = props => {
+  if(props.category.toLowerCase()  === 'testimonials') 
+    return 'http://evanjones.xyz/ssg/wp-content/uploads/2016/11/15.jpg'
+  else if(props.category.toLowerCase()  === 'featured clients') 
+    return 'http://evanjones.xyz/ssg/wp-content/uploads/2016/11/14.jpg'
+  else (props.category.toLowerCase()  === 'blog') 
+    return 'http://evanjones.xyz/ssg/wp-content/uploads/2016/11/13.jpg'
+}
+
 export default class extends React.Component {
   constructor(props){
     super(props)
@@ -74,17 +81,14 @@ export default class extends React.Component {
     this.setState(initializeClass(props))
   }
   componentDidMount(){
-    this.zodiac()
-  }
-  zodiac(){
-    Zodiac({container:'title-background', color:this.state.color})
+    scrollTo(document.body, 0)
   }
   render(){
     return (
       <div>
         <div className="content">
           <Helmet title={"See Spark Go | " + this.state.category.name} />
-          <canvas id="title-background" className="title" style={{backgroundColor: this.state.color}}></canvas>
+          <div id="title-background" className="title" style={{backgroundImage: 'url(' + getImageFromCategory({category:this.state.category.name}) + ')', backgroundColor:'#F6921E'}}></div>
           <div className="title abs" style={{backgroundColor: 'transparent'}}>
             <h1 className="">{this.state.category.name}</h1>
           </div>

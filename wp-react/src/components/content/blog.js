@@ -1,7 +1,6 @@
 import React from 'react'
-import Divider from 'material-ui/Divider'
 import Paper from '../shared/paper'
-import {Link,Router,Route} from 'react-router'
+import {Link} from 'react-router'
 import BackIcon from 'material-ui/svg-icons/navigation/arrow-back'
 import NextIcon from 'material-ui/svg-icons/navigation/arrow-forward'
 import IconButton from 'material-ui/IconButton'
@@ -12,7 +11,7 @@ const FeaturedClient = props => {
 			<Paper data={{initial:0, range:1}}>
 				<div className="blog-post container-fluid np">
 					<div className="show-mobile show-tablet">
-						<img src={props.data.post_image} />
+						<img src={props.data.post_image} alt={props.data.post_image}/>
 					</div>
 					<div className="col-sm-12 np show-mobile show-tablet">
 						<div className="inner">
@@ -73,6 +72,7 @@ export default class extends React.Component{
 		this.state = initClass(props)
 	}
 	componentWillMount(){
+		scrollTo(document.body, 0)
 	}
 	previousPage(){
 		this.changePage(-1)
