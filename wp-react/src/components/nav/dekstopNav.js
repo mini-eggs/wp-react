@@ -8,7 +8,8 @@ export default class extends React.Component{
     this.state = {
       items:props.data.menu,
       data:props.data,
-      title:props.title
+      title:props.title,
+      color:props.color
     };
   }
   getRouteFromValue = (val) => {
@@ -68,7 +69,7 @@ export default class extends React.Component{
               this.state.data.menu.map( (item) => {
                 return (
                   <div className="item">
-                    <Link to={this.getRouteFromValue(item.id)} className="link">
+                    <Link to={this.getRouteFromValue(item.id)} className="link" style={{color:this.state.color, borderColor:this.state.color}}>
                       {item.title}
                     </Link>
                   </div>

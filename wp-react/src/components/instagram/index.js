@@ -7,12 +7,14 @@ import Paper from '../shared/paper'
 import Theme from '../shared/theme'
 import LargeLogo from '../../../public/ssg_large_logo.png'
 import Helmet from '../shared/helmet'
+import BasicNavWrap from '../nav/'
 
 const GetContainer = props => {
 	return (
 		<div className="instagram-home animated fadeIn">
 			<div className="content">
 				<div className="max-width">
+             		<BasicNavWrap onlyShowMobile={true} title="" color={'#F6921E'} data={props.data} />
 					<div className="center">
 						<img className="instagram-ssg-logo" src={LargeLogo} />
 					</div>
@@ -59,7 +61,7 @@ class InstaGram extends React.Component{
     return (
     	<Theme>
         	<Helmet title={ "See Spark Go | Athens, GA"} />
-	    	<GetContainer>
+	    	<GetContainer data={this.state}>
 	    		<OrderedGrid parent={this.state} data={this.state.instagram.data} />
 	    	</GetContainer>
     	</Theme>

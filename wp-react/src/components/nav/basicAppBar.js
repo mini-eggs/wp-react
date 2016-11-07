@@ -14,7 +14,12 @@ const inline = {
     top:'0',
     width:'100%'
   }
-};
+}
+
+const hexToRgba = (hex) => {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return "rgb(" + parseInt(result[1], 16) + "," + parseInt(result[2], 16) + "," + parseInt(result[3], 16) + ")";
+}
 
 export default class extends React.Component {
   constructor(props){
@@ -22,7 +27,8 @@ export default class extends React.Component {
     this.state = {
       items:props.data.menu,
       data:props.data,
-      title:props.title
+      title:props.title,
+      color:props.color ? hexToRgba(props.color) : 'rgb(255, 255, 255)'
     };
   }
   getRouteFromValue = (val) => {
@@ -77,9 +83,10 @@ export default class extends React.Component {
         style={inline.AppBar}
         iconElementLeft={<span/>}
         title={this.state.title}
+        iconStyleRight={{color:this.state.color, fill:this.state.color}}
         iconElementRight={(
           <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon color="white"/></IconButton>}
+            iconButtonElement={<IconButton className="inherit" ><MoreVertIcon color={this.state.color}/></IconButton>}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >

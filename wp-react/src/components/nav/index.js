@@ -14,17 +14,37 @@ const inline = {
   }
 };
 
-export default (props) => {
+export default props => {
+
+  console.log(props)
+
+  let styles={
+    mobileStyles:{
+    },
+    desktopStyles:{
+    }
+  }
+  if(props.onlyShowMobile){
+    styles={
+      mobileStyles:{
+        display:'block'
+      },
+      desktopStyles:{
+        display:'none'
+      }
+    }
+  }
+
   return (
     <div style={{zIndex:'9',position:'relative'}} >
       <div style={inline.position}>
         <Paper data={{initial:1, range:0}}>
           <div style={inline.background}>
-            <div className="show-tablet show-mobile">
-              <BasicAppBar  data={props.data} title={props.title} />
+            <div className="show-tablet show-mobile" style={styles.mobileStyles}>
+              <BasicAppBar color={props.color} data={props.data} title={props.title} />
             </div>
-            <div className="show-desktop">
-              <DesktopNav data={props.data} title={props.title} />
+            <div className="show-desktop" style={styles.desktopStyles}>
+              <DesktopNav color={props.color} data={props.data} title={props.title} />
             </div>
           </div>
         </Paper>
